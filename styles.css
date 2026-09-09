@@ -360,6 +360,16 @@ main {
   margin-top: 18px;
 }
 
+.code-card.template-card pre {
+  overflow: hidden;
+}
+
+.code-card.template-card pre code {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .code-header {
   display: flex;
   gap: 12px;
