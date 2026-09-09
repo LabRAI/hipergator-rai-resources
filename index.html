@@ -41,7 +41,7 @@
     <div class="page-shell">
       <aside class="side-nav" aria-label="Page navigation">
         <a href="#overview">Quick path</a>
-        <a href="#entry">Choose the entry point</a>
+        <a href="#entry">Choose your identity path</a>
         <a href="#prepare">Prepare first</a>
         <a href="#ssh-key">SSH public key</a>
         <a href="#submit">Submit the request</a>
@@ -71,7 +71,7 @@
             <article class="step-card">
               <span class="step-number">3</span>
               <h3>Submit a federated request</h3>
-              <p>Select Florida State University and sign in with your FSU credentials.</p>
+              <p>Submit the federated request with your own institution's credentials, or follow the approved affiliate path if federation is unavailable.</p>
             </article>
             <article class="step-card">
               <span class="step-number">4</span>
@@ -86,22 +86,25 @@
 
         <section id="entry" class="content-band">
           <div class="section-heading">
-            <p class="eyebrow">Choose the entry point</p>
-            <h2>Most FSU users should use Federated Account Request</h2>
+            <p class="eyebrow">Choose your identity path</p>
+            <h2>Use your own institution's identity</h2>
           </div>
           <div class="choice-grid">
             <article class="choice-card recommended">
-              <h3>Florida State University identity</h3>
-              <p>Select <strong>Federated Account Request</strong>, choose Florida State University, and authenticate with your FSU credentials.</p>
+              <h3>FSU student or staff member</h3>
+              <p>Select <strong>Federated Account Request</strong>, choose Florida State University, and authenticate with your FSU credentials and FSU email.</p>
             </article>
             <article class="choice-card">
-              <h3>Existing UF GatorLink identity</h3>
-              <p>Select the UF account path only when you already have the relevant UF identity and are instructed to use it.</p>
+              <h3>Student from another federated institution</h3>
+              <p>If your home institution appears in the <a href="https://docs.rc.ufl.edu/access/federated_liaisons/" target="_blank" rel="noopener noreferrer">UFRC federated liaison list</a>, choose it in the federated request and use that institution's credentials and email. Your RAI Lab faculty sponsor still approves resource access.</p>
             </article>
             <article class="choice-card">
-              <h3>External collaborator</h3>
-              <p>If you cannot use federated login, follow the official affiliate-account instructions before starting the HiPerGator request.</p>
+              <h3>External student without federation</h3>
+              <p>Ask your FSU faculty sponsor to confirm the official affiliate-account or UF GatorLink path before applying. Do not invent an FSU identity or use another person's credentials.</p>
             </article>
+          </div>
+          <div class="notice">
+            Your login identity and your resource sponsor are different things. An external student may use a home-institution identity while an FSU faculty sponsor authorizes access to RAI Lab resources.
           </div>
         </section>
 
@@ -113,15 +116,15 @@
           <form class="checklist" aria-label="Pre-application checklist">
             <label>
               <input type="checkbox" data-check="email">
-              <span>Your FSU institutional email address</span>
+              <span>Your institutional email: FSU email for FSU users, or your home-institution email for external users</span>
             </label>
             <label>
               <input type="checkbox" data-check="organization">
-              <span><strong>Organization:</strong> Florida State University</span>
+              <span><strong>Organization:</strong> your actual institution, not automatically Florida State University</span>
             </label>
             <label>
               <input type="checkbox" data-check="sponsor">
-              <span>The exact RAI Lab faculty sponsor and sponsored group</span>
+              <span>The exact RAI Lab faculty sponsor and sponsored group; external students should confirm the sponsor before applying</span>
             </label>
             <label>
               <input type="checkbox" data-check="project">
@@ -133,7 +136,7 @@
             </label>
           </form>
           <p>
-            If the sponsor or group is not clear, pause and ask the RAI Lab resource manager. A request submitted under the wrong sponsor can delay both account creation and group access.
+            If the sponsor or group is not clear, pause and ask the RAI Lab resource manager. A request submitted under the wrong sponsor or with the wrong institution can delay both account creation and group access.
           </p>
         </section>
 
@@ -148,7 +151,7 @@
                 <h3>Linux or macOS</h3>
                 <button class="copy-button" type="button" data-copy-target="unix-key" aria-label="Copy Linux or macOS command">Copy</button>
               </div>
-              <pre><code id="unix-key">ssh-keygen -t ed25519 -C "your_fsu_email@fsu.edu" -f ~/.ssh/id_ed25519_hipergator
+              <pre><code id="unix-key">ssh-keygen -t ed25519 -C "your_institutional_email" -f ~/.ssh/id_ed25519_hipergator
 cat ~/.ssh/id_ed25519_hipergator.pub</code></pre>
             </article>
             <article class="code-card">
@@ -156,7 +159,7 @@ cat ~/.ssh/id_ed25519_hipergator.pub</code></pre>
                 <h3>Windows PowerShell</h3>
                 <button class="copy-button" type="button" data-copy-target="windows-key" aria-label="Copy Windows PowerShell command">Copy</button>
               </div>
-              <pre><code id="windows-key">ssh-keygen -t ed25519 -C "your_fsu_email@fsu.edu" -f $env:USERPROFILE/.ssh/id_ed25519_hipergator
+              <pre><code id="windows-key">ssh-keygen -t ed25519 -C "your_institutional_email" -f $env:USERPROFILE/.ssh/id_ed25519_hipergator
 type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
             </article>
           </div>
@@ -172,8 +175,8 @@ type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
           </div>
           <ol class="timeline">
             <li>Open <a href="https://it.ufl.edu/rc/get-started/request-hipergator-account/" target="_blank" rel="noopener noreferrer">Request HiPerGator Account</a>.</li>
-            <li>Choose <strong>Federated Account Request</strong> and select <strong>Florida State University</strong>.</li>
-            <li>Enter your legal name, FSU email, organization, confirmed sponsor, and Comments.</li>
+            <li>Choose <strong>Federated Account Request</strong>. Select Florida State University if you are an FSU user; otherwise select your home institution if it is listed.</li>
+            <li>Enter your legal name, institutional email, actual organization, confirmed sponsor, and Comments.</li>
             <li>Paste the requested information or upload the public key as directed by the form.</li>
             <li>Finish the form in the same browser session. If the request expires or resets, use UFRC Support rather than submitting multiple conflicting requests.</li>
             <li>Open the confirmation email, accept the terms and conditions, and complete any remaining verification step.</li>
@@ -185,10 +188,10 @@ type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
               <h3>Comments template</h3>
               <button class="copy-button" type="button" data-copy-target="comment-template" aria-label="Copy Comments template">Copy</button>
             </div>
-            <pre><code id="comment-template">I am an FSU researcher working with Professor [FULL NAME] in the RAI Lab. I am requesting HiPerGator access for [PROJECT OR PURPOSE] using the RAI Lab sponsored resources. Please associate my account with the appropriate sponsored group after sponsor approval.</code></pre>
+            <pre><code id="comment-template">I am a [FSU student/staff member OR student/researcher at HOME INSTITUTION] working with Professor [FULL NAME] in the RAI Lab. I am requesting HiPerGator access for [PROJECT OR PURPOSE] using the RAI Lab sponsored resources. My institutional email is [EMAIL]. Please associate my account with the appropriate sponsored group after sponsor approval.</code></pre>
           </article>
           <p>
-            Replace every bracketed field before submitting. The faculty name in Comments should match the sponsor and project information you confirmed with the lab.
+            Replace every bracketed field before submitting. External students should keep their home institution and institutional email in the form; the faculty name in Comments should match the sponsor and project information you confirmed with the lab.
           </p>
         </section>
 
@@ -208,7 +211,7 @@ type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
           <div class="info-grid">
             <article class="info-card">
               <h3>Username</h3>
-              <p>Use the HiPerGator username from your account email. It may differ from the local part of your FSU email address.</p>
+              <p>Use the HiPerGator username from your account email. It may differ from the local part of your institutional email address.</p>
             </article>
             <article class="info-card">
               <h3>Network access</h3>
@@ -227,7 +230,7 @@ type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
             <h2>Do not submit a second account request</h2>
           </div>
           <p>
-            If you already have a HiPerGator account, ask the RAI Lab resource manager whether your existing username should be added to the relevant group or allocation. If a UFRC ticket is needed, include your HiPerGator username, FSU email, faculty sponsor, requested group, and a short project description.
+            If you already have a HiPerGator account, ask the RAI Lab resource manager whether your existing username should be added to the relevant group or allocation. If a UFRC ticket is needed, include your HiPerGator username, institutional email, home institution if applicable, faculty sponsor, requested group, and a short project description.
           </p>
           <div class="notice">
             A group-membership request is different from an account request. Use the support workflow for membership or allocation changes so that you do not create duplicate identities.
@@ -251,6 +254,10 @@ type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
             <details>
               <summary>Can I request access to a second group later?</summary>
               <p>Yes, when the additional group is approved. Keep the existing account and request the additional membership through the responsible manager or UFRC Support.</p>
+            </details>
+            <details>
+              <summary>Can an external student use this guide?</summary>
+              <p>Yes, if an FSU faculty sponsor confirms the work and the student follows the identity path for their home institution. Use a federated home-institution account when available; otherwise follow the official affiliate-account instructions. Resource access is never automatic.</p>
             </details>
           </div>
         </section>
