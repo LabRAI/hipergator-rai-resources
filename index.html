@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HiPerGator Access: RAI Lab Resources</title>
+    <meta
+      name="description"
+      content="A practical guide for requesting HiPerGator access to RAI Lab sponsored resources at Florida State University."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-copy">
+          <p class="eyebrow">RAI Lab Resource Guide</p>
+          <h1>Request HiPerGator Access</h1>
+          <p class="lead">
+            Use this page when your work is supported by RAI Lab resources. Confirm the correct faculty sponsor and sponsored group before submitting the UF Research Computing request.
+          </p>
+          <div class="action-row" aria-label="Primary actions">
+            <a class="button primary" href="https://it.ufl.edu/rc/get-started/request-hipergator-account/" target="_blank" rel="noopener noreferrer">
+              Open the official request page
+            </a>
+            <a class="button secondary" href="#ssh-key">Create an SSH key</a>
+          </div>
+          <p class="verified">Reviewed September 8, 2026. UFRC documentation controls if procedures change.</p>
+        </div>
+        <figure class="workflow-figure">
+          <img
+            src="assets/hypergator-workflow.png"
+            alt="Identity verification, SSH public key, sponsor approval, account creation, and group access workflow"
+            width="1600"
+            height="820"
+          >
+        </figure>
+      </div>
+    </header>
+
+    <div class="page-shell">
+      <aside class="side-nav" aria-label="Page navigation">
+        <a href="#overview">Quick path</a>
+        <a href="#entry">Choose the entry point</a>
+        <a href="#prepare">Prepare first</a>
+        <a href="#ssh-key">SSH public key</a>
+        <a href="#submit">Submit the request</a>
+        <a href="#after">After approval</a>
+        <a href="#existing">Already have an account?</a>
+        <a href="#faq">FAQ</a>
+        <a href="#references">Official references</a>
+      </aside>
+
+      <main>
+        <section id="overview" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Quick path</p>
+            <h2>Five steps from preparation to access</h2>
+          </div>
+          <div class="flow-grid" aria-label="HiPerGator account request steps">
+            <article class="step-card">
+              <span class="step-number">1</span>
+              <h3>Confirm your sponsor</h3>
+              <p>Ask your RAI Lab faculty lead or resource manager for the exact sponsor and group to use.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">2</span>
+              <h3>Create a key pair</h3>
+              <p>Generate an SSH key pair locally and keep the private key private.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">3</span>
+              <h3>Submit a federated request</h3>
+              <p>Select Florida State University and sign in with your FSU credentials.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">4</span>
+              <h3>Complete verification</h3>
+              <p>Confirm your email, accept the terms, and upload only the public key.</p>
+            </article>
+          </div>
+          <div class="notice">
+            A HiPerGator sponsor, group, and allocation are related but distinct records. Do not guess a group name or treat a sponsor's username as the allocation name; confirm the exact values before applying.
+          </div>
+        </section>
+
+        <section id="entry" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Choose the entry point</p>
+            <h2>Most FSU users should use Federated Account Request</h2>
+          </div>
+          <div class="choice-grid">
+            <article class="choice-card recommended">
+              <h3>Florida State University identity</h3>
+              <p>Select <strong>Federated Account Request</strong>, choose Florida State University, and authenticate with your FSU credentials.</p>
+            </article>
+            <article class="choice-card">
+              <h3>Existing UF GatorLink identity</h3>
+              <p>Select the UF account path only when you already have the relevant UF identity and are instructed to use it.</p>
+            </article>
+            <article class="choice-card">
+              <h3>External collaborator</h3>
+              <p>If you cannot use federated login, follow the official affiliate-account instructions before starting the HiPerGator request.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="prepare" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Before applying</p>
+            <h2>Have these details ready</h2>
+          </div>
+          <form class="checklist" aria-label="Pre-application checklist">
+            <label>
+              <input type="checkbox" data-check="email">
+              <span>Your FSU institutional email address</span>
+            </label>
+            <label>
+              <input type="checkbox" data-check="organization">
+              <span><strong>Organization:</strong> Florida State University</span>
+            </label>
+            <label>
+              <input type="checkbox" data-check="sponsor">
+              <span>The exact RAI Lab faculty sponsor and sponsored group</span>
+            </label>
+            <label>
+              <input type="checkbox" data-check="project">
+              <span>A short description of the project or work that requires access</span>
+            </label>
+            <label>
+              <input type="checkbox" data-check="key">
+              <span>An SSH public key file, such as <code>~/.ssh/id_ed25519_hipergator.pub</code></span>
+            </label>
+          </form>
+          <p>
+            If the sponsor or group is not clear, pause and ask the RAI Lab resource manager. A request submitted under the wrong sponsor can delay both account creation and group access.
+          </p>
+        </section>
+
+        <section id="ssh-key" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">SSH public key</p>
+            <h2>Create the key before opening the form</h2>
+          </div>
+          <div class="code-grid">
+            <article class="code-card">
+              <div class="code-header">
+                <h3>Linux or macOS</h3>
+                <button class="copy-button" type="button" data-copy-target="unix-key" aria-label="Copy Linux or macOS command">Copy</button>
+              </div>
+              <pre><code id="unix-key">ssh-keygen -t ed25519 -C "your_fsu_email@fsu.edu" -f ~/.ssh/id_ed25519_hipergator
+cat ~/.ssh/id_ed25519_hipergator.pub</code></pre>
+            </article>
+            <article class="code-card">
+              <div class="code-header">
+                <h3>Windows PowerShell</h3>
+                <button class="copy-button" type="button" data-copy-target="windows-key" aria-label="Copy Windows PowerShell command">Copy</button>
+              </div>
+              <pre><code id="windows-key">ssh-keygen -t ed25519 -C "your_fsu_email@fsu.edu" -f $env:USERPROFILE/.ssh/id_ed25519_hipergator
+type $env:USERPROFILE/.ssh/id_ed25519_hipergator.pub</code></pre>
+            </article>
+          </div>
+          <p>
+            Upload the file ending in <code>.pub</code>. Never upload or send the private key. A public key may be required even when your first connection will use Open OnDemand or another browser-based interface.
+          </p>
+        </section>
+
+        <section id="submit" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Submit the request</p>
+            <h2>Follow the UFRC form in one browser session</h2>
+          </div>
+          <ol class="timeline">
+            <li>Open <a href="https://it.ufl.edu/rc/get-started/request-hipergator-account/" target="_blank" rel="noopener noreferrer">Request HiPerGator Account</a>.</li>
+            <li>Choose <strong>Federated Account Request</strong> and select <strong>Florida State University</strong>.</li>
+            <li>Enter your legal name, FSU email, organization, confirmed sponsor, and Comments.</li>
+            <li>Paste the requested information or upload the public key as directed by the form.</li>
+            <li>Finish the form in the same browser session. If the request expires or resets, use UFRC Support rather than submitting multiple conflicting requests.</li>
+            <li>Open the confirmation email, accept the terms and conditions, and complete any remaining verification step.</li>
+            <li>Wait for sponsor approval. UFRC documentation says account creation commonly takes two to three business days after approval.</li>
+          </ol>
+
+          <article class="code-card compact">
+            <div class="code-header">
+              <h3>Comments template</h3>
+              <button class="copy-button" type="button" data-copy-target="comment-template" aria-label="Copy Comments template">Copy</button>
+            </div>
+            <pre><code id="comment-template">I am an FSU researcher working with Professor [FULL NAME] in the RAI Lab. I am requesting HiPerGator access for [PROJECT OR PURPOSE] using the RAI Lab sponsored resources. Please associate my account with the appropriate sponsored group after sponsor approval.</code></pre>
+          </article>
+          <p>
+            Replace every bracketed field before submitting. The faculty name in Comments should match the sponsor and project information you confirmed with the lab.
+          </p>
+        </section>
+
+        <section id="after" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">After approval</p>
+            <h2>Verify the account before starting a large job</h2>
+          </div>
+          <p>Complete any required onboarding or training, then test an interactive login and a small job.</p>
+          <article class="code-card compact">
+            <div class="code-header">
+              <h3>SSH login</h3>
+              <button class="copy-button" type="button" data-copy-target="ssh-login" aria-label="Copy SSH login command">Copy</button>
+            </div>
+            <pre><code id="ssh-login">ssh -i ~/.ssh/id_ed25519_hipergator YOUR_HIPERGATOR_USERNAME@hpg.rc.ufl.edu</code></pre>
+          </article>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>Username</h3>
+              <p>Use the HiPerGator username from your account email. It may differ from the local part of your FSU email address.</p>
+            </article>
+            <article class="info-card">
+              <h3>Network access</h3>
+              <p>Follow the current UFRC network guidance. Federated SSH access may require eduVPN before connecting.</p>
+            </article>
+            <article class="info-card">
+              <h3>Allocation check</h3>
+              <p>Confirm your default group, Slurm account, storage path, and the RAI Lab allocation you are expected to use.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="existing" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Existing account</p>
+            <h2>Do not submit a second account request</h2>
+          </div>
+          <p>
+            If you already have a HiPerGator account, ask the RAI Lab resource manager whether your existing username should be added to the relevant group or allocation. If a UFRC ticket is needed, include your HiPerGator username, FSU email, faculty sponsor, requested group, and a short project description.
+          </p>
+          <div class="notice">
+            A group-membership request is different from an account request. Use the support workflow for membership or allocation changes so that you do not create duplicate identities.
+          </div>
+        </section>
+
+        <section id="faq" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">FAQ</p>
+            <h2>Common questions</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>What if the sponsor is not listed?</summary>
+              <p>Do not select an unrelated sponsor. Confirm that the faculty sponsor has an active HiPerGator group and ask the RAI Lab resource manager or UFRC Support for the correct path.</p>
+            </details>
+            <details>
+              <summary>What if the confirmation email never arrives?</summary>
+              <p>Check spam or junk folders first. If it is still missing, contact UFRC Support with your name, institutional email, submission time, and sponsor.</p>
+            </details>
+            <details>
+              <summary>Can I request access to a second group later?</summary>
+              <p>Yes, when the additional group is approved. Keep the existing account and request the additional membership through the responsible manager or UFRC Support.</p>
+            </details>
+          </div>
+        </section>
+
+        <section id="references" class="content-band">
+          <div class="section-heading">
+            <p class="eyebrow">Official references</p>
+            <h2>Use UFRC documentation for current policy</h2>
+          </div>
+          <div class="reference-grid">
+            <a href="https://it.ufl.edu/rc/get-started/request-hipergator-account/" target="_blank" rel="noopener noreferrer">Request HiPerGator Account</a>
+            <a href="https://docs.rc.ufl.edu/access/federated_request/" target="_blank" rel="noopener noreferrer">Federated Account Request</a>
+            <a href="https://docs.rc.ufl.edu/access/federated_liaisons/" target="_blank" rel="noopener noreferrer">Federated Account Liaisons</a>
+            <a href="https://docs.rc.ufl.edu/quickstart/zero_hipergator/" target="_blank" rel="noopener noreferrer">From Zero to HiPerGator</a>
+            <a href="https://docs.rc.ufl.edu/interfaces/terminal/" target="_blank" rel="noopener noreferrer">Connecting with SSH</a>
+            <a href="https://docs.rc.ufl.edu/access/ssh_keys/" target="_blank" rel="noopener noreferrer">Using SSH Keys</a>
+            <a href="https://support.rc.ufl.edu/" target="_blank" rel="noopener noreferrer">UFRC Support</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>RAI Lab HiPerGator resource guide. Official UFRC documentation takes precedence when procedures change.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
